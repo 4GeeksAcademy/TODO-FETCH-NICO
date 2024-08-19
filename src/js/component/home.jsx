@@ -1,25 +1,37 @@
-import React from "react";
-
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, { useState } from "react";
+import CreateUser from "./CreateUser";
+import Todos from "./Todos";
+import DeleteButton from "./DeleteButton";
 
 //create your first component
 const Home = () => {
+
+	const [createdUserName, setCreatedUserName] = useState("");
+	const [tasks, setTasks] = useState ([]);
+
+	const clearTasks = async () => {
+        try {
+            const response = await fetch (`https://playground.4geeks.com/todo/users/${createdUserName}`, {
+                method: "DELETE",
+                headers: {
+                    "accept": "application/json"
+                }
+            });
+            console.log(`${createdUserName} Eliminado`);
+            setTasks([]);
+            setCreatedUserName("")
+        } catch (error) {
+            console.log(error);
+        }
+    };
+	
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
+	<div>
+		<CreateUser nameInHome={setCreatedUserName} />
+		<Todos userName={createdUserName} tasks={tasks} setTasks={setTasks} />
+		<DeleteButton clearTasks={clearTasks} />
+	</div>
+
 	);
 };
 
