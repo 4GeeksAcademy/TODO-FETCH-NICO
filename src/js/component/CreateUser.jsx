@@ -32,8 +32,8 @@ const CreateUser = ({nameInHome}) => {
     return(
         <nav className="navbar navbar-light text-center">
   <span className="navbar-brand m-2 h1">
-    <input type="text" placeholder="Introduce tu Nombre" value={userName} onChange={handleInputChange} />
-    <button className="btn" onClick={postUser}>Crear usuario</button></span>
+    <input type="text" placeholder="Introduce tu Usuario" value={userName} onChange={handleInputChange} />
+    <button className="btn btn-success" onClick={postUser}>Crear usuario</button></span>
     {errorMessage && <div className="alert alert-danger mt-2">{errorMessage}</div>}
 </nav>
     )

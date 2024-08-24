@@ -4,7 +4,7 @@ const DeleteButton = ({clearTasks}) =>{
 
 return (
     <div>
-        <button className="btn" onClick={clearTasks}>Eliminar TODOS</button>
+        <button className="btn btn-danger" onClick={clearTasks}>Eliminar TODOS</button>
     </div>
 )
 

@@ -3,7 +3,6 @@ import CreateUser from "./CreateUser";
 import Todos from "./Todos";
 import DeleteButton from "./DeleteButton";
 
-//create your first component
 const Home = () => {
 
 	const [createdUserName, setCreatedUserName] = useState("");
@@ -28,6 +27,9 @@ const Home = () => {
 	return (
 	<div>
 		<CreateUser nameInHome={setCreatedUserName} />
+        <div class="d-flex justify-content-center align-items-center">
+            <h1> TODOS {createdUserName}</h1>
+        </div>
 		<Todos userName={createdUserName} tasks={tasks} setTasks={setTasks} />
 		<DeleteButton clearTasks={clearTasks} />
 	</div>
